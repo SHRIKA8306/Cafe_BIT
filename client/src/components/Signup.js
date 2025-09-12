@@ -5,8 +5,8 @@ import API from '../api';
 export default function Signup() {
     //to store the data
     const[data,setData]=useState({
-        firstname:'',
-        lastname:'',
+        firstName:'',
+        lastName:'',
         email:'',
         password:''
     })
@@ -41,11 +41,11 @@ export default function Signup() {
                             <div className='row'>
                                 <div className='col-md-6 mb-3'>
                                    <label className='form-label'>First Name</label>
-                                   <input type='text' name='firstname' className='form-control' placeholder='Enter your firstname' onChange={handleChange} required/>
+                                   <input type='text' name='firstName' className='form-control' placeholder='Enter your firstname' onChange={handleChange} required/>
                                 </div>
                                 <div className='col-md-6 mb-3'>
                                    <label className='form-label'>Last Name</label>
-                                   <input type='text' name='lastname' className='form-control' placeholder='Enter your lastname' onChange={handleChange} required/>
+                                   <input type='text' name='lastName' className='form-control' placeholder='Enter your lastname' onChange={handleChange} required/>
                                 </div>
                             </div>
                             <div className='mb-3'>
