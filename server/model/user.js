@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema(
     },
     {timestamps: true}
 )
-const User = mongoose.model('User',userSchema);
+const User = mongoose.model("Customer_Account",userSchema);
 const registerSchema = Joi.object({
     firstName:Joi.string().min(2).required(),
     lastName:Joi.string().min(2).required(),

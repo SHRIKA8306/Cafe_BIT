@@ -1,7 +1,6 @@
 const router = require('express').Router()
 const bcrypt = require('bcrypt');
 const {User,registerSchema} = require('../model/user');
-const { number } = require('joi');
 router.post('/',async(req,res)=>{
     //1.validate input
     const{error,value} = registerSchema.validate(req.body);

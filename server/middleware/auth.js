@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken');
-const{model} = require('mongoose');
 module.exports=(req,res,next)=>{
    const header = req.headers.authorization || '' ;
    //check if user token provide or not
