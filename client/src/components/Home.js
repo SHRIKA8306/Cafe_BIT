@@ -15,22 +15,29 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-
+import { useNavigate } from 'react-router-dom';
 const drawerWidth = 240;
 const navItems = ['Home', 'Orders', 'Cart', 'Signup'];
 
 function Home(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-
+ const navigate = useNavigate();
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
-
+const handleNavClick = (item) => {
+    if (item === 'Signup') {
+      navigate('/signup');
+    } else if (item === 'Home') {
+      navigate('/');
+    }
+    // Add other navigation logic if needed
+  };
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography variant="h6" sx={{ my: 2, fontWeight: 'bold', color: 'primary.main' }}>
-        BIT-Cafe
+        BIT@Cafe
       </Typography>
       <Divider />
       <TextField
@@ -58,14 +65,10 @@ function Home(props) {
       <CssBaseline />
       <AppBar component="nav" position="fixed" color="primary">
         <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
-          {/* Left side - Brand Name */}
           <Typography variant="h6" component="div" sx={{ fontWeight: 'bold' }}>
-            BIT-Cafe
+            BIT@Cafe
           </Typography>
-
-          {/* Right side - Search + Links */}
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-            {/* Mobile menu icon */}
             <IconButton
               color="inherit"
               aria-label="open drawer"
@@ -76,7 +79,6 @@ function Home(props) {
               <MenuIcon />
             </IconButton>
 
-            {/* Desktop search and nav links */}
             <TextField
               variant="outlined"
               size="small"
@@ -90,7 +92,7 @@ function Home(props) {
             />
             <Box sx={{ display: { xs: 'none', sm: 'flex' }, gap: 1 }}>
               {navItems.map((item) => (
-                <Button key={item} sx={{ color: '#fff' }}>
+                <Button key={item} sx={{ color: '#fff' }} onClick={() => handleNavClick(item)}>
                   {item}
                 </Button>
               ))}
