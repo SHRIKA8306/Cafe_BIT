@@ -16,7 +16,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-
+import { useNavigate } from 'react-router-dom';
 const drawerWidth = 240;
 const navItems = ['Home', 'Orders', 'Cart', 'Signup'];
 
@@ -24,11 +24,18 @@ function Home(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [showSearch, setShowSearch] = React.useState(false);
-
+const navigate = useNavigate();
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
-
+const handleNavClick = (item) => {
+    if (item === 'Signup') {
+      navigate('/signup');
+    } else if (item === 'Home') {
+      navigate('/');
+    }
+    // Add other navigation logic if needed
+  };
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography
@@ -154,7 +161,7 @@ function Home(props) {
                     '&:hover': {
                       bgcolor: '#800000',
                     },
-                  }}
+                  }}  onClick={() => handleNavClick(item)}
                 >
                   {item}
                 </Button>
