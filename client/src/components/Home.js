@@ -11,46 +11,55 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
+import SearchIcon from '@mui/icons-material/Search';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import { useNavigate } from 'react-router-dom';
+
 const drawerWidth = 240;
 const navItems = ['Home', 'Orders', 'Cart', 'Signup'];
 
 function Home(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
- const navigate = useNavigate();
+  const [showSearch, setShowSearch] = React.useState(false);
+
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
-const handleNavClick = (item) => {
-    if (item === 'Signup') {
-      navigate('/signup');
-    } else if (item === 'Home') {
-      navigate('/');
-    }
-    // Add other navigation logic if needed
-  };
+
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <Typography variant="h6" sx={{ my: 2, fontWeight: 'bold', color: 'primary.main' }}>
-        BIT@Cafe
+      <Typography
+        variant="h6"
+        sx={{
+          my: 2,
+          fontWeight: 'bold',
+          color: 'maroon',
+          fontFamily: 'Poppins, sans-serif',
+        }}
+      >
+        BIT-Cafe
       </Typography>
       <Divider />
       <TextField
         variant="outlined"
         size="small"
         placeholder="Search..."
-        sx={{ m: 2, width: '80%' }}
+        sx={{ m: 2, width: '85%' }}
       />
       <List>
         {navItems.map((item) => (
           <ListItem key={item} disablePadding>
             <ListItemButton sx={{ textAlign: 'center' }}>
-              <ListItemText primary={item} />
+              <ListItemText
+                primary={item}
+                primaryTypographyProps={{
+                  fontFamily: 'Poppins, sans-serif',
+                  fontSize: '1rem',
+                }}
+              />
             </ListItemButton>
           </ListItem>
         ))}
@@ -63,12 +72,35 @@ const handleNavClick = (item) => {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar component="nav" position="fixed" color="primary">
+      <AppBar
+        component="nav"
+        position="fixed"
+        sx={{
+          bgcolor: 'maroon',
+          paddingY: 2,
+          paddingX: 10,
+          boxShadow: 3,
+          fontFamily: 'Poppins, sans-serif',
+        }}
+      >
         <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
-          <Typography variant="h6" component="div" sx={{ fontWeight: 'bold' }}>
-            BIT@Cafe
+          {/* Left side - Brand Name */}
+          <Typography
+            variant="h5"
+            component="div"
+            sx={{
+              fontWeight: 'bold',
+              letterSpacing: 1,
+              fontFamily: 'Poppins, sans-serif',
+              fontSize: '1.8rem',
+            }}
+          >
+            BIT-Cafe
           </Typography>
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+
+          {/* Right side - Search + Links */}
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 3 }}>
+            {/* Mobile menu icon */}
             <IconButton
               color="inherit"
               aria-label="open drawer"
@@ -79,20 +111,51 @@ const handleNavClick = (item) => {
               <MenuIcon />
             </IconButton>
 
-            <TextField
-              variant="outlined"
-              size="small"
-              placeholder="Search..."
-              sx={{
-                display: { xs: 'none', sm: 'block' },
-                bgcolor: 'white',
-                borderRadius: 1,
-                width: 200,
-              }}
-            />
-            <Box sx={{ display: { xs: 'none', sm: 'flex' }, gap: 1 }}>
+            {/* Search toggle button */}
+            {!showSearch && (
+              <IconButton color="inherit" onClick={() => setShowSearch(true)}>
+                <SearchIcon />
+              </IconButton>
+            )}
+
+            {/* Search box appears on click */}
+            {showSearch && (
+              <TextField
+                variant="outlined"
+                size="small"
+                placeholder="Search..."
+                autoFocus
+                onBlur={() => setShowSearch(false)}
+                sx={{
+                  display: { xs: 'none', sm: 'block' },
+                  bgcolor: 'white',
+                  borderRadius: 1,
+                  width: 200,
+                  fontFamily: 'Poppins, sans-serif',
+                }}
+              />
+            )}
+
+            {/* Nav links */}
+            <Box sx={{ display: { xs: 'none', sm: 'flex' }, gap: 2 }}>
               {navItems.map((item) => (
-                <Button key={item} sx={{ color: '#fff' }} onClick={() => handleNavClick(item)}>
+                <Button
+                  key={item}
+                  sx={{
+                    color: '#fff',
+                    textTransform: 'none',
+                    fontWeight: 600,
+                    fontSize: '1rem',
+                    fontFamily: 'Poppins, sans-serif',
+                    px: 3,
+                    py: 1.2,
+                    borderRadius: 3,
+                    transition: '0.3s',
+                    '&:hover': {
+                      bgcolor: '#800000',
+                    },
+                  }}
+                >
                   {item}
                 </Button>
               ))}
