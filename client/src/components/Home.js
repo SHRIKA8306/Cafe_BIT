@@ -18,6 +18,7 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { useNavigate } from 'react-router-dom';
 import myImage from '../images/Banner1.png';
+
 const drawerWidth = 240;
 const navItems = ['Home', 'Orders', 'Cart', 'Signup'];
 
@@ -25,17 +26,20 @@ function Home(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [showSearch, setShowSearch] = React.useState(false);
-const navigate = useNavigate();
+  const navigate = useNavigate();
+
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
-const handleNavClick = (item) => {
+
+  const handleNavClick = (item) => {
     if (item === 'Signup') {
       navigate('/signup');
     } else if (item === 'Home') {
       navigate('/');
     }
-  };
+  };
+
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography
@@ -47,7 +51,7 @@ const handleNavClick = (item) => {
           fontFamily: 'Poppins, sans-serif',
         }}
       >
-         Cafe@BIT
+        Cafe@BIT
       </Typography>
       <Divider />
       <TextField
@@ -102,7 +106,7 @@ const handleNavClick = (item) => {
               fontSize: '1.8rem',
             }}
           >
-           Cafe@BIT
+            Cafe@BIT
           </Typography>
 
           {/* Right side - Search + Links */}
@@ -161,7 +165,8 @@ const handleNavClick = (item) => {
                     '&:hover': {
                       bgcolor: '#800000',
                     },
-                  }}  onClick={() => handleNavClick(item)}
+                  }}
+                  onClick={() => handleNavClick(item)}
                 >
                   {item}
                 </Button>
@@ -189,18 +194,22 @@ const handleNavClick = (item) => {
           {drawer}
         </Drawer>
       </nav>
-       <Box sx={{ width: "100%", mt: 10 }}>
-      <img
-        src={myImage}
-        alt="banner"
-        style={{
-          width: "100%",
-          height: "50vh",      
-          objectFit: "cover",   
-          display: "block"
-        }}
-      />
-    </Box>
+
+      {/* Banner image with extra top margin */}
+      <Box sx={{ width: "100%", mt: 15, px: 5 }}>
+        <img
+          src={myImage}
+          alt="banner"
+          style={{
+            width: "100%",
+            height: "50vh",
+            objectFit: "cover",
+            display: "block",
+            borderRadius: "20px",
+            boxShadow: "0 8px 20px rgba(0, 0, 0, 0.15)",
+          }}
+        />
+      </Box>
     </Box>
   );
 }
