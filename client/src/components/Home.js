@@ -16,7 +16,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
@@ -26,7 +26,7 @@ import myImage from '../images/Banner1.png';
 import myImage1 from '../images/veg.jpg';
 import myImage2 from '../images/non-veg.jpg';
 import myImage3 from '../images/juice.jpg';
-
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 const drawerWidth = 240;
 const navItems = ['Home', 'Orders', 'Cart', 'Signup'];
 
@@ -42,7 +42,9 @@ function Home(props) {
 
   const handleNavClick = (item) => {
     if (item === 'Signup') navigate('/signup');
-    else if (item === 'Home') navigate('/');
+    else if (item === 'Home') navigate('/home');
+     else if (item === 'Cart') navigate('/cart');
+     else if (item === 'Orders') navigate('/orders');
   };
 
   const drawer = (
@@ -178,7 +180,7 @@ function Home(props) {
         />
 
         {/* Cards Section */}
-        <Container sx={{ mt: 5 }}>
+        <Container sx={{ mt: 5 ,marginBottom:"20px"}}>
           <Grid container spacing={5} justifyContent="center">
             {/* Veg Card */}
             <Grid item xs={12} sm={6} md={3}>
@@ -192,14 +194,13 @@ function Home(props) {
                   flexDirection: 'column',
                   justifyContent: 'space-between',
                   transition: 'transform 0.3s, box-shadow 0.3s',
-                  '&:hover': { transform: 'scale(1.05)', boxShadow: '0 12px 30px rgba(0,0,0,0.3)' },
+                  '&:hover': { transform: 'scale(1.05)', boxShadow: '0 12px 30px rgba(0,0,0,0.3)' }
                 }}
               >
-                <CardMedia component="img" height="140" image={myImage1} alt="Veg" />
-                <CardContent sx={{ textAlign: 'center', p: 2 }}>
-                  <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#800000', fontFamily: 'Poppins, sans-serif' }}>
-                    Veg
-                  </Typography>
+                <CardMedia component="img" height="200" image={myImage1} alt="Veg" />
+                <CardContent sx={{ flex: 1,display: 'flex',justifyContent: 'center',flexDirection: 'column',textAlign: 'center',backgroundColor:"#df9797ff"}}>
+                  <Typography>Veg Items</Typography>
+                <Link to='/veg'><Button variant='contained'style={{backgroundColor:"#800000",fontSize:"15px",borderRadius:"20px"}}>Explore <ArrowForwardIcon/></Button></Link>
                 </CardContent>
               </Card>
             </Grid>
@@ -219,11 +220,10 @@ function Home(props) {
                   '&:hover': { transform: 'scale(1.05)', boxShadow: '0 12px 30px rgba(0,0,0,0.3)' },
                 }}
               >
-                <CardMedia component="img" height="140" image={myImage2} alt="Non-Veg" />
-                <CardContent sx={{ textAlign: 'center', p: 2 }}>
-                  <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#800000', fontFamily: 'Poppins, sans-serif' }}>
-                    Non-Veg
-                  </Typography>
+                <CardMedia component="img" height="200" image={myImage2} alt="Non-Veg" />
+                <CardContent sx={{ flex: 1,display: 'flex',flexDirection: 'column',justifyContent: 'center',textAlign: 'center',backgroundColor:"#df9797ff" }}>
+                  <Typography>Non-Veg Items</Typography>
+    <Link to='/non-veg'><Button variant='contained'style={{backgroundColor:"#800000",fontSize:"15px",borderRadius:"20px"}}>Explore <ArrowForwardIcon/></Button></Link>
                 </CardContent>
               </Card>
             </Grid>
@@ -243,11 +243,10 @@ function Home(props) {
                   '&:hover': { transform: 'scale(1.05)', boxShadow: '0 12px 30px rgba(0,0,0,0.3)' },
                 }}
               >
-                <CardMedia component="img" height="140" image={myImage3} alt="Juice" />
-                <CardContent sx={{ textAlign: 'center', p: 2 }}>
-                  <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#800000', fontFamily: 'Poppins, sans-serif' }}>
-                    Juice
-                  </Typography>
+                <CardMedia component="img" height="200" image={myImage3} alt="Juice" />
+                <CardContent sx={{ flex: 1,display: 'flex',flexDirection: 'column', justifyContent: 'center',textAlign: 'center',backgroundColor:"#df9797ff"}}>
+                  <Typography>Juice Items</Typography> 
+            <Link to='/juice'><Button variant='contained' style={{backgroundColor:"#800000",fontSize:"15px",borderRadius:"20px"}}>Explore<ArrowForwardIcon/></Button></Link>
                 </CardContent>
               </Card>
             </Grid>

@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Juice() {
+function Nonveg() {
   return (
     <div>
       
@@ -8,4 +8,4 @@ function Juice() {
   )
 }
 
-export default Juice
+export default Nonveg
