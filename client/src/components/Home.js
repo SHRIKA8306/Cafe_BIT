@@ -17,6 +17,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { useNavigate } from 'react-router-dom';
+import myImage from '../images/Banner1.png';
 const drawerWidth = 240;
 const navItems = ['Home', 'Orders', 'Cart', 'Signup'];
 
@@ -34,7 +35,6 @@ const handleNavClick = (item) => {
     } else if (item === 'Home') {
       navigate('/');
     }
-    // Add other navigation logic if needed
   };
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
@@ -47,7 +47,7 @@ const handleNavClick = (item) => {
           fontFamily: 'Poppins, sans-serif',
         }}
       >
-        BIT-Cafe
+         Cafe@BIT
       </Typography>
       <Divider />
       <TextField
@@ -102,7 +102,7 @@ const handleNavClick = (item) => {
               fontSize: '1.8rem',
             }}
           >
-            BIT-Cafe
+           Cafe@BIT
           </Typography>
 
           {/* Right side - Search + Links */}
@@ -189,6 +189,18 @@ const handleNavClick = (item) => {
           {drawer}
         </Drawer>
       </nav>
+       <Box sx={{ width: "100%", mt: 10 }}>
+      <img
+        src={myImage}
+        alt="banner"
+        style={{
+          width: "100%",
+          height: "50vh",      
+          objectFit: "cover",   
+          display: "block"
+        }}
+      />
+    </Box>
     </Box>
   );
 }
